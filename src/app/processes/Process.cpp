@@ -1,11 +1,12 @@
 #include "Process.hpp"
 #include <iostream>
 #include <sys/wait.h>
+#include "../encryptDecrypt/Cryption.hpp"
 
 Process::Process() {}
 
 bool Process::submitToQueue(std::unique_ptr<Task> task){
-    taskQueue.push(task);
+    taskQueue.push(std::move(task));
     return true;
 }
 
@@ -14,6 +15,6 @@ void Process::executeTasks(){
         std::unique_ptr<Task> taskToExecute = std::move(taskQueue.front());
         taskQueue.pop();
         std::cout << "Executing Task: " << taskToExecute->toString() << std::endl;
-        // executeCryption(taskToExecute->toString());
+        executeCryption(taskToExecute->toString());
     }
 }

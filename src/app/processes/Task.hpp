@@ -13,8 +13,8 @@ enum class Action {
 
 struct Task {
     std::fstream f_stream;
-    std::string file_path;
     Action action;
+    std::string file_path;
 
     Task(std::fstream &&stream, Action act, std::string filePath) : 
         f_stream(std::move(stream)), 
