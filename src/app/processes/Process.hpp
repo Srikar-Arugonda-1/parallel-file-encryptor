@@ -4,6 +4,9 @@
 #include "Task.hpp"
 #include <queue>
 #include <memory>
+#include <iostream>
+#include <sys/wait.h>
+#include <thread>
 
 class Process {
     public:
